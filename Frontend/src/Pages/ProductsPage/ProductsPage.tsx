@@ -18,7 +18,7 @@ const ProductsPage = () => {
     const [products, setProducts] = useState<Product[]>([]);
 
     useEffect(() => {
-        FetchProducts(null, null).then((data: Product[]) => setProducts(data))
+        FetchProducts().then((data: Product[]) => setProducts(data))
     }, [])
 
     return (

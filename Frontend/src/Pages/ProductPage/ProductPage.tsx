@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
+import { Helmet } from 'react-helmet';
 import { Link, useParams } from 'react-router-dom';
 import { FetchProduct } from '../../Service/Api';
 import cls from './ProductPage.module.scss';
-import { Helmet } from 'react-helmet';
 
 interface Product {
     id: number;
@@ -20,7 +20,7 @@ const ProductPage = () => {
     useEffect(() => {
         if (!id || product) return;
 
-        FetchProduct(null, { id: Number(id) })
+        FetchProduct({ id: Number(id) })
             .then((product: Product) => setProduct(product))
             .catch((error) => console.error('Ошибка загрузки товара:', error));
     }, [id, product]); // <-- следим за id и product
